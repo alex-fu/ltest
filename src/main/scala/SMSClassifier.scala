@@ -59,7 +59,7 @@ object SMSClassifier extends LazyLogging {
     val evaluator = new MulticlassClassificationEvaluator()
       .setLabelCol("indexedLabel")
       .setPredictionCol("prediction")
-      .setMetricName("precision")
+      .setMetricName("weightedPrecision")
     val predictionAccuracy = evaluator.evaluate(predictionResultDF)
     println("Testing Accuracy is %2.4f".format(predictionAccuracy * 100) + "%")
     sc.stop
